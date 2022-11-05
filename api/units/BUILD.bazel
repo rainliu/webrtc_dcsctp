@@ -1,0 +1,12 @@
+cc_library(
+    name = "time_delta",
+    srcs = ["time_delta.cc"],
+    hdrs = ["time_delta.h"],
+    deps = [
+        "//api:array_view",
+        "//rtc_base:checks",
+        "//rtc_base:stringutils",
+        "//rtc_base/units:unit_base",
+    ],
+    visibility = ["//visibility:public"],
+)

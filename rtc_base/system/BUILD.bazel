@@ -24,3 +24,11 @@ cc_library(
     deps = [],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "no_unique_address",
+    srcs = [],
+    hdrs = ["no_unique_address.h"],
+    deps = [],
+    visibility = ["//visibility:public"],
+)

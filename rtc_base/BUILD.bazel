@@ -71,6 +71,7 @@ cc_library(
         "thread_annotations.h",
     ],
     deps = ["//rtc_base/system:arch"],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -83,6 +84,18 @@ cc_library(
         ":type_traits",
     ],
 )
+
+cc_library(
+    name = "safe_conversions",
+    srcs = [],
+    hdrs = [
+        "numerics/safe_conversions.h",
+        "numerics/safe_conversions_impl.h",
+    ],
+    deps = [],
+    visibility = ["//visibility:public"],
+)
+
 
 ##################################################
 # unit tests

@@ -1,0 +1,22 @@
+cc_library(
+    name = "timer",
+    srcs = ["timer.cc"],
+    hdrs = [
+        "fake_timeout.h",
+        "timer.h",
+    ],
+    deps = [
+        "//api:array_view",
+        "//api/task_queue:task_queue",
+        "//rtc_base:checks",
+        "//rtc_base:strong_alias",
+        "//rtc_base/containers:flat_map",
+        "//rtc_base/containers:flat_set",
+        "//net/dcsctp/public:socket",
+        "//net/dcsctp/public:types",
+        "@com_google_absl//absl/memory",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+    visibility = ["//visibility:public"],
+)

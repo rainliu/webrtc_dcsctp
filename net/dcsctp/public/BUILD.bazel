@@ -13,3 +13,26 @@ cc_library(
     ],
     visibility = ["//visibility:public"], #TODO: visibility is not set in .gn
 )
+
+cc_library(
+    name = "socket",
+    srcs = [
+        "dcsctp_handover_state.cc",
+    ],
+    hdrs = [
+        "dcsctp_handover_state.h",
+        "dcsctp_socket.h",
+        "packet_observer.h",
+        "timeout.h",
+    ],
+    deps = [
+        ":types",
+        "//api:array_view",
+        "//api/task_queue:task_queue",
+        "//rtc_base:checks",
+        "//rtc_base:strong_alias",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+    visibility = ["//visibility:public"], #TODO: visibility is not set in .gn
+)
