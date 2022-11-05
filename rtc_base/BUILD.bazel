@@ -83,3 +83,24 @@ cc_library(
         ":type_traits",
     ],
 )
+
+##################################################
+# unit tests
+##################################################
+#cc_library(
+#    name = "gunit_helpers",
+#    srcs = [
+#        "gunit.cc",
+#        "gunit.h",
+#    ],
+#    hdrs = [],
+#    deps = [
+#        ":logging",
+#        ":rtc_base",
+#        ":rtc_base_tests_utils",
+#        ":stringutils",
+#        ":threading",
+#        "//test:test_support",
+#        "@com_google_absl//absl/strings"
+#    ],
+#)
