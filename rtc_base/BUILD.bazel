@@ -1,0 +1,37 @@
+cc_library(
+    name = "strong_alias",
+    srcs = [],
+    hdrs = ["strong_alias.h"],
+    deps = [],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "type_traits",
+    srcs = [],
+    hdrs = ["type_traits.h"],
+    deps = [],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "safe_compare",
+    srcs = [],
+    hdrs = ["numerics/safe_compare.h"],
+    deps = [":type_traits"],
+)
+
+cc_library(
+    name = "checks",
+    srcs = ["checks.cc"],
+    hdrs = ["checks.h"],
+    deps = [
+        ":safe_compare",
+        "//api:scoped_refptr",
+        "//rtc_base/system:inline",
+        "//rtc_base/system:rtc_export",
+        "@com_google_absl//absl/meta:type_traits",
+        "@com_google_absl//absl/strings",
+    ],
+    visibility = ["//visibility:public"],
+)

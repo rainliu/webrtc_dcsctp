@@ -1,0 +1,15 @@
+cc_library(
+    name = "types",
+    srcs = [],
+    hdrs = [
+        "dcsctp_message.h",
+        "dcsctp_options.h",
+        "types.h",
+    ],
+    deps = [
+        "//api:array_view",
+        "//rtc_base:strong_alias",
+        "@com_google_absl//absl/types:optional",
+    ],
+    visibility = ["//visibility:public"], #TODO: visibility is not set in .gn
+)

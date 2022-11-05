@@ -1,0 +1,16 @@
+
+cc_library(
+    name = "internal_types",
+    deps = [
+        "//rtc_base:strong_alias",
+        "//net/dcsctp/public:types",
+      ],
+    hdrs = [ "internal_types.h" ],
+)
+
+cc_library(
+    name = "math",
+    srcs = [],
+    hdrs = ["math.h"],
+    deps = [],
+)

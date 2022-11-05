@@ -1,0 +1,19 @@
+
+cc_library(
+    name = "array_view",
+    srcs = [],
+    hdrs = ["array_view.h"],
+    deps = [
+        "//rtc_base:checks",
+        "//rtc_base:type_traits",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "scoped_refptr",
+    srcs = [],
+    hdrs = ["scoped_refptr.h"],
+    deps = [],
+    visibility = ["//visibility:public"],
+)

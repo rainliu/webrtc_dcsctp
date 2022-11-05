@@ -1,0 +1,18 @@
+cc_library(
+    name = "inline",
+    srcs = [],
+    hdrs = ["inline.h"],
+    deps = [],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "rtc_export",
+    srcs = [],
+    hdrs = [
+        "rtc_export.h",
+        "rtc_export_template.h",
+    ],
+    deps = [],
+    visibility = ["//visibility:public"],
+)
