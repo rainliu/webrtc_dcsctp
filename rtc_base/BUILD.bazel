@@ -35,3 +35,51 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "stringutils",
+    srcs = [
+        "string_encode.cc",
+        "string_to_number.cc",
+        "string_utils.cc",
+        "strings/string_builder.cc",
+        "strings/string_format.cc",
+    ],
+    hdrs = [
+        "string_encode.h",
+        "string_to_number.h",
+        "string_utils.h",
+        "strings/string_builder.h",
+        "strings/string_format.h",
+    ],
+    deps = [
+        ":checks",
+        ":macromagic",
+        ":safe_minmax",
+        "//api:array_view",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "macromagic",
+    srcs = [],
+    hdrs = [
+        "arraysize.h",
+        "thread_annotations.h",
+    ],
+    deps = ["//rtc_base/system:arch"],
+)
+
+cc_library(
+    name = "safe_minmax",
+    srcs = [],
+    hdrs = ["numerics/safe_minmax.h"],
+    deps = [
+        ":checks",
+        ":safe_compare",
+        ":type_traits",
+    ],
+)

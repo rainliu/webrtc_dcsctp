@@ -14,3 +14,20 @@ cc_library(
     hdrs = ["math.h"],
     deps = [],
 )
+
+cc_library(
+    name = "sequence_numbers",
+    srcs = [],
+    hdrs = ["sequence_numbers.h"],
+    deps = [":internal_types"],
+)
+
+cc_library(
+    name = "str_join",
+    srcs = [],
+    hdrs = ["str_join.h"],
+    deps = [
+        "//rtc_base:stringutils",
+        "@com_google_absl//absl/strings"
+    ],
+)
