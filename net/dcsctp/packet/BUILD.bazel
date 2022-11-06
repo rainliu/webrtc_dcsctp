@@ -9,6 +9,7 @@ cc_library(
         "//api:array_view",
         "//rtc_base:checks",
     ],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -23,6 +24,7 @@ cc_library(
         "@com_google_absl//absl/strings:strings",
         "@com_google_absl//absl/types:optional",
     ],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -147,6 +149,7 @@ cc_library(
         "@com_google_absl//absl/strings",
         "@com_google_absl//absl/types:optional",
     ],
+    visibility = ["//visibility:public"],
 )
 
 
@@ -222,6 +225,7 @@ cc_library(
         "//rtc_base:checks",
         "//rtc_base:logging",
     ],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(

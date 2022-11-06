@@ -20,11 +20,26 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
-
 cc_library(
     name = "yield",
     srcs = ["yield.cc"],
     hdrs = ["yield.h"],
     deps = [],
     #visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "sequence_checker_internal",
+    srcs = ["sequence_checker_internal.cc"],
+    hdrs = ["sequence_checker_internal.h"],
+    deps = [
+        ":mutex",
+        "//rtc_base:checks",
+        "//rtc_base:macromagic",
+        "//rtc_base:platform_thread_types",
+        "//rtc_base:stringutils",
+        "//api/task_queue",
+        "//rtc_base/system:rtc_export",
+    ],
+    visibility = ["//visibility:public"],
 )

@@ -11,6 +11,7 @@ cc_library(
         "//net/dcsctp/public:types",
         "@com_google_absl//absl/types:optional"
     ],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -32,6 +33,7 @@ cc_library(
         "@com_google_absl//absl/strings",
         "@com_google_absl//absl/types:optional"
     ],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -68,6 +70,7 @@ cc_library(
         "//net/dcsctp/public:types",
         "@com_google_absl//absl/strings"
     ],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -78,6 +81,7 @@ cc_library(
         "//rtc_base:checks",
         "//net/dcsctp/public:types",
     ],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -128,5 +132,6 @@ cc_library(
         "@com_google_absl//absl/strings",
         "@com_google_absl//absl/types:optional",
     ],
+    visibility = ["//visibility:public"],
 )
 

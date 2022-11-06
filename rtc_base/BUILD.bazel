@@ -146,6 +146,21 @@ cc_library(
     #visibility = ["//visibility:public"],
 )
 
+cc_library(
+    name = "refcount",
+    srcs = [],
+    hdrs = [
+        "ref_count.h",
+        "ref_counted_object.h",
+        "ref_counter.h",
+    ],
+    deps = [
+        ":macromagic",
+        "//api:scoped_refptr",
+    ],
+    visibility = ["//visibility:public"],
+)
+
 ##################################################
 # unit tests
 ##################################################
