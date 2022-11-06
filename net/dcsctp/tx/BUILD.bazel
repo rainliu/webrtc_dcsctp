@@ -1,0 +1,132 @@
+cc_library(
+    name = "send_queue",
+    srcs = [],
+    hdrs = ["send_queue.h"],
+    deps = [
+        "//api:array_view",
+        "//net/dcsctp/common:internal_types",
+        "//net/dcsctp/packet:chunk",
+        "//net/dcsctp/packet:data",
+        "//net/dcsctp/public:socket",
+        "//net/dcsctp/public:types",
+        "@com_google_absl//absl/types:optional"
+    ],
+)
+
+cc_library(
+    name = "rr_send_queue",
+    srcs = ["rr_send_queue.cc"],
+    hdrs = ["rr_send_queue.h"],
+    deps = [
+        ":send_queue",
+        ":stream_scheduler",
+        "//api:array_view",
+        "//rtc_base:checks",
+        "//rtc_base:logging",
+        "//rtc_base/containers:flat_map",
+        "//net/dcsctp/common:str_join",
+        "//net/dcsctp/packet:data",
+        "//net/dcsctp/public:socket",
+        "//net/dcsctp/public:types",
+        "@com_google_absl//absl/algorithm:container",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional"
+    ],
+)
+
+cc_library(
+    name = "stream_scheduler",
+    srcs = ["stream_scheduler.cc"],
+    hdrs = ["stream_scheduler.h"],
+    deps = [
+        ":send_queue",
+        "//api:array_view",
+        "//rtc_base:checks",
+        "//rtc_base:logging",
+        "//rtc_base:strong_alias",
+        "//rtc_base/containers:flat_set",
+        "//net/dcsctp/common:str_join",
+        "//net/dcsctp/packet:chunk",
+        "//net/dcsctp/packet:data",
+        "//net/dcsctp/packet:sctp_packet",
+        "//net/dcsctp/public:socket",
+        "//net/dcsctp/public:types",
+        "@com_google_absl//absl/algorithm:container",
+        "@com_google_absl//absl/memory",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+)
+
+cc_library(
+    name = "retransmission_error_counter",
+    srcs = ["retransmission_error_counter.cc"],
+    hdrs = ["retransmission_error_counter.h"],
+    deps = [
+        "//rtc_base:checks",
+        "//rtc_base:logging",
+        "//net/dcsctp/public:types",
+        "@com_google_absl//absl/strings"
+    ],
+)
+
+cc_library(
+    name = "retransmission_timeout",
+    srcs = ["retransmission_timeout.cc"],
+    hdrs = ["retransmission_timeout.h"],
+    deps = [
+        "//rtc_base:checks",
+        "//net/dcsctp/public:types",
+    ],
+)
+
+cc_library(
+    name = "outstanding_data",
+    srcs = ["outstanding_data.cc"],
+    hdrs = ["outstanding_data.h"],
+    deps = [
+        ":retransmission_timeout",
+        ":send_queue",
+        "//api:array_view",
+        "//rtc_base:checks",
+        "//rtc_base:logging",
+        "//net/dcsctp/common:math",
+        "//net/dcsctp/common:sequence_numbers",
+        "//net/dcsctp/common:str_join",
+        "//net/dcsctp/packet:chunk",
+        "//net/dcsctp/packet:data",
+        "//net/dcsctp/public:socket",
+        "//net/dcsctp/public:types",
+        "//net/dcsctp/timer",
+        "@com_google_absl//absl/algorithm:container",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+)
+
+cc_library(
+    name = "retransmission_queue",
+    srcs = ["retransmission_queue.cc"],
+    hdrs = ["retransmission_queue.h"],
+    deps = [
+        ":outstanding_data",
+        ":retransmission_timeout",
+        ":send_queue",
+        "//api:array_view",
+        "//rtc_base:checks",
+        "//rtc_base:logging",
+        "//rtc_base:stringutils",
+        "//net/dcsctp/common:math",
+        "//net/dcsctp/common:sequence_numbers",
+        "//net/dcsctp/common:str_join",
+        "//net/dcsctp/packet:chunk",
+        "//net/dcsctp/packet:data",
+        "//net/dcsctp/public:socket",
+        "//net/dcsctp/public:types",
+        "//net/dcsctp/timer",
+        "@com_google_absl//absl/algorithm:container",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+)
+

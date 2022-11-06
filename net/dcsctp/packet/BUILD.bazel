@@ -242,6 +242,5 @@ cc_library(
         "@com_google_absl//absl/memory:memory",
         "@com_google_absl//absl/types:optional",
     ],
+    visibility = ["//visibility:public"],
 )
-
-
