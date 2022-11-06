@@ -1,0 +1,10 @@
+cc_library(
+    name = "unit_base",
+    srcs = [],
+    hdrs = ["unit_base.h"],
+    deps = [
+        "//rtc_base:checks",
+        "//rtc_base:safe_conversions",
+    ],
+    visibility = ["//visibility:public"],
+)

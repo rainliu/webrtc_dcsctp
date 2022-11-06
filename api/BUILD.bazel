@@ -1,0 +1,50 @@
+
+cc_library(
+    name = "array_view",
+    srcs = [],
+    hdrs = ["array_view.h"],
+    deps = [
+        "//rtc_base:checks",
+        "//rtc_base:type_traits",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "scoped_refptr",
+    srcs = [],
+    hdrs = ["scoped_refptr.h"],
+    deps = [],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "make_ref_counted",
+    srcs = [],
+    hdrs = ["make_ref_counted.h"],
+    deps = ["//rtc_base:refcount"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "refcountedbase",
+    srcs = [],
+    hdrs = ["ref_counted_base.h"],
+    deps = [
+        "//rtc_base:macromagic",
+        "//rtc_base:refcount",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "sequence_checker",
+    srcs = [],
+    hdrs = ["sequence_checker.h"],
+    deps = [
+        "//rtc_base:checks",
+        "//rtc_base:macromagic",
+        "//rtc_base/synchronization:sequence_checker_internal",
+    ],
+    visibility = ["//visibility:public"],
+)

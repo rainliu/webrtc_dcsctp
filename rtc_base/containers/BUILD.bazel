@@ -1,0 +1,38 @@
+cc_library(
+    name = "flat_set",
+    srcs = [],
+    hdrs = ["flat_set.h"],
+    deps = [
+        ":flat_containers_internal",
+    ],
+    visibility = ["//visibility:public"], #TODO: visibility is not set in .gn
+)
+
+cc_library(
+    name = "flat_map",
+    srcs = [],
+    hdrs = ["flat_map.h"],
+    deps = [
+        ":flat_containers_internal",
+        "//rtc_base:checks",
+    ],
+    visibility = ["//visibility:public"], #TODO: visibility is not set in .gn
+)
+
+
+cc_library(
+    name = "flat_containers_internal",
+    srcs = ["flat_tree.cc"],
+    hdrs = [
+        "flat_tree.h",
+        "identity.h",
+        "invoke.h",
+        "move_only_int.h",
+    ],
+    deps = [
+        "//rtc_base:checks",
+        "//rtc_base/system:no_unique_address",
+        "@com_google_absl//absl/algorithm:container",
+    ],
+    # visibility = ["//visibility:public"], #TODO: visibility is not set in .gn
+)

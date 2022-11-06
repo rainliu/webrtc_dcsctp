@@ -72,3 +72,9 @@
 /xcodebuild
 /.vscode
 !webrtc/*
+.idea/
+bazel-bin
+bazel-out
+bazel-src
+bazel-testlogs
+cmake-build-debug/

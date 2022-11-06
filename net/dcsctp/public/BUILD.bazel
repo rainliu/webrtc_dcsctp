@@ -1,0 +1,82 @@
+cc_library(
+    name = "types",
+    srcs = [],
+    hdrs = [
+        "dcsctp_message.h",
+        "dcsctp_options.h",
+        "types.h",
+    ],
+    deps = [
+        "//api:array_view",
+        "//rtc_base:strong_alias",
+        "@com_google_absl//absl/types:optional",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "socket",
+    srcs = [
+        "dcsctp_handover_state.cc",
+    ],
+    hdrs = [
+        "dcsctp_handover_state.h",
+        "dcsctp_socket.h",
+        "packet_observer.h",
+        "timeout.h",
+    ],
+    deps = [
+        ":types",
+        "//api:array_view",
+        "//api/task_queue:task_queue",
+        "//rtc_base:checks",
+        "//rtc_base:strong_alias",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "factory",
+    srcs = ["dcsctp_socket_factory.cc"],
+    hdrs = ["dcsctp_socket_factory.h"],
+    deps = [
+        ":socket",
+        ":types",
+        "//net/dcsctp/socket:dcsctp_socket",
+        "@com_google_absl//absl/strings",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "utils",
+    srcs = ["text_pcap_packet_observer.cc"],
+    hdrs = ["text_pcap_packet_observer.h"],
+    deps = [
+        ":socket",
+        ":types",
+        "//api:array_view",
+        "//rtc_base:logging",
+        "//rtc_base:stringutils",
+        "//net/dcsctp/socket:dcsctp_socket",
+        "@com_google_absl//absl/strings",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+#cc_library(
+#    name = "mocks",
+#    srcs = [],
+#    hdrs = [
+#        "mock_dcsctp_socket.h",
+#        "mock_dcsctp_socket_factory.h",
+#    ],
+#    deps = [
+#        ":factory",
+#        ":socket",
+#        "//test:test_support",
+#    ],
+#    visibility = ["//visibility:public"],
+#)

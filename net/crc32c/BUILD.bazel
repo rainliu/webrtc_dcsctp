@@ -1,0 +1,28 @@
+cc_library(
+    name = "crc32c",
+    srcs = [
+        "src/src/crc32c.cc",
+        "src/src/crc32c_portable.cc",
+    ],
+    hdrs = ["src/include/crc32c/crc32c.h"],
+    deps = [
+        #TODO: ":crc32c_arm64",
+        ":crc32c_internal_headers",
+        #TODO: ":crc32c_sse42",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "crc32c_internal_headers",
+    srcs = [],
+    hdrs = [
+        "config/crc32c/crc32c_config.h",
+        "src/src/crc32c_internal.h",
+        "src/src/crc32c_prefetch.h",
+        "src/src/crc32c_read_le.h",
+        "src/src/crc32c_round_up.h",
+        "src/src/crc32c_config.h",
+    ],
+    deps = [],
+)

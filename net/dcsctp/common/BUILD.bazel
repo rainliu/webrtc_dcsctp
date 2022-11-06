@@ -1,0 +1,59 @@
+
+cc_library(
+    name = "internal_types",
+    deps = [
+        "//rtc_base:strong_alias",
+        "//net/dcsctp/public:types",
+      ],
+    hdrs = [ "internal_types.h" ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "math",
+    srcs = [],
+    hdrs = ["math.h"],
+    deps = [],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "sequence_numbers",
+    srcs = [],
+    hdrs = ["sequence_numbers.h"],
+    deps = [":internal_types"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "str_join",
+    srcs = [],
+    hdrs = ["str_join.h"],
+    deps = [
+        "//rtc_base:stringutils",
+        "@com_google_absl//absl/strings"
+    ],
+    visibility = ["//visibility:public"],
+)
+
+##################################################
+# unit tests
+##################################################
+#cc_test(
+#    name = "dcsctp_common_unittests",
+#    srcs = [
+#         "math_test.cc",
+#         "sequence_numbers_test.cc",
+#         "str_join_test.cc",
+#    ],
+#    hdrs = [],
+#    deps = [
+#        ":math",
+#        ":sequence_numbers",
+#        ":str_join",
+#        "//api:array_view",
+#        "//rtc_base:checks",
+#        "//rtc_base:gunit_helpers",
+#        "//test:test_support",
+#    ],
+#)
