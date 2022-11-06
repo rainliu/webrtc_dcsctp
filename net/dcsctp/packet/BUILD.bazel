@@ -43,7 +43,7 @@ cc_library(
     deps = [
         "//api:array_view",
         "//rtc_base:checks",
-        #"//third_party/crc32c",
+        "//net/crc32c",
     ],
 )
 
