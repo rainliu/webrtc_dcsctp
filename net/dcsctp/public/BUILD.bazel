@@ -11,7 +11,7 @@ cc_library(
         "//rtc_base:strong_alias",
         "@com_google_absl//absl/types:optional",
     ],
-    visibility = ["//visibility:public"], #TODO: visibility is not set in .gn
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -34,5 +34,49 @@ cc_library(
         "@com_google_absl//absl/strings",
         "@com_google_absl//absl/types:optional",
     ],
-    visibility = ["//visibility:public"], #TODO: visibility is not set in .gn
+    visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "factory",
+    srcs = ["dcsctp_socket_factory.cc"],
+    hdrs = ["dcsctp_socket_factory.h"],
+    deps = [
+        ":socket",
+        ":types",
+        "//net/dcsctp/socket:dcsctp_socket",
+        "@com_google_absl//absl/strings",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "utils",
+    srcs = ["text_pcap_packet_observer.cc"],
+    hdrs = ["text_pcap_packet_observer.h"],
+    deps = [
+        ":socket",
+        ":types",
+        "//api:array_view",
+        "//rtc_base:logging",
+        "//rtc_base:stringutils",
+        "//net/dcsctp/socket:dcsctp_socket",
+        "@com_google_absl//absl/strings",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+#cc_library(
+#    name = "mocks",
+#    srcs = [],
+#    hdrs = [
+#        "mock_dcsctp_socket.h",
+#        "mock_dcsctp_socket_factory.h",
+#    ],
+#    deps = [
+#        ":factory",
+#        ":socket",
+#        "//test:test_support",
+#    ],
+#    visibility = ["//visibility:public"],
+#)
