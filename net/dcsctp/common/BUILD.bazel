@@ -22,6 +22,7 @@ cc_library(
     srcs = [],
     hdrs = ["sequence_numbers.h"],
     deps = [":internal_types"],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(

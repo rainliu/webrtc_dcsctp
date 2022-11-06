@@ -1,0 +1,96 @@
+cc_library(
+    name = "data_tracker",
+    srcs = ["data_tracker.cc"],
+    hdrs = ["data_tracker.h"],
+    deps = [
+        "//api:array_view",
+        "//rtc_base:checks",
+        "//rtc_base:logging",
+        "//rtc_base:stringutils",
+        "//net/dcsctp/common:sequence_numbers",
+        "//net/dcsctp/packet:chunk",
+        "//net/dcsctp/packet:data",
+        "//net/dcsctp/public:socket",
+        "//net/dcsctp/timer",
+        "@com_google_absl//absl/algorithm:container",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+)
+
+cc_library(
+    name = "reassembly_streams",
+    srcs = [],
+    hdrs = ["reassembly_streams.h"],
+    deps = [
+        "//api:array_view",
+        "//net/dcsctp/common:sequence_numbers",
+        "//net/dcsctp/packet:chunk",
+        "//net/dcsctp/packet:data",
+        "//net/dcsctp/public:socket",
+        "//net/dcsctp/public:types",
+        "@com_google_absl//absl/strings"
+    ],
+)
+
+cc_library(
+    name = "interleaved_reassembly_streams",
+    srcs = ["interleaved_reassembly_streams.cc"],
+    hdrs = ["interleaved_reassembly_streams.h"],
+    deps = [
+        ":reassembly_streams",
+        "//api:array_view",
+        "//rtc_base:checks",
+        "//rtc_base:logging",
+        "//net/dcsctp/common:sequence_numbers",
+        "//net/dcsctp/packet:chunk",
+        "//net/dcsctp/packet:data",
+        "//net/dcsctp/public:types",
+        "@com_google_absl//absl/algorithm:container",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+)
+
+cc_library(
+    name = "traditional_reassembly_streams",
+    srcs = ["traditional_reassembly_streams.cc"],
+    hdrs = ["traditional_reassembly_streams.h"],
+    deps = [
+        ":reassembly_streams",
+        "//api:array_view",
+        "//rtc_base:checks",
+        "//rtc_base:logging",
+        "//net/dcsctp/common:sequence_numbers",
+        "//net/dcsctp/packet:chunk",
+        "//net/dcsctp/packet:data",
+        "//net/dcsctp/public:types",
+        "@com_google_absl//absl/algorithm:container",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+)
+
+cc_library(
+    name = "reassembly_queue",
+    srcs = ["reassembly_queue.cc"],
+    hdrs = ["reassembly_queue.h"],
+    deps = [
+        ":interleaved_reassembly_streams",
+        ":reassembly_streams",
+        ":traditional_reassembly_streams",
+        "//api:array_view",
+        "//rtc_base:checks",
+        "//rtc_base:logging",
+        "//net/dcsctp/common:internal_types",
+        "//net/dcsctp/common:sequence_numbers",
+        "//net/dcsctp/common:str_join",
+        "//net/dcsctp/packet:chunk",
+        "//net/dcsctp/packet:data",
+        "//net/dcsctp/packet:parameter",
+        "//net/dcsctp/public:socket",
+        "//net/dcsctp/public:types",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+)
