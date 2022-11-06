@@ -1,0 +1,30 @@
+
+cc_library(
+    name = "mutex",
+    srcs = [],
+    hdrs = [
+        "mutex.h",
+        "mutex_critical_section.h",
+        "mutex_pthread.h",
+        "mutex_abseil.h", # if (rtc_use_absl_mutex) {
+    ],
+    deps = [
+        ":yield",
+        "//rtc_base:checks",
+        "//rtc_base:macromagic",
+        "//rtc_base:platform_thread_types",
+        "//rtc_base/system:no_unique_address",
+        "@com_google_absl//absl/base:core_headers",
+        "@com_google_absl//absl/synchronization", # if (rtc_use_absl_mutex) {
+    ],
+    visibility = ["//visibility:public"],
+)
+
+
+cc_library(
+    name = "yield",
+    srcs = ["yield.cc"],
+    hdrs = ["yield.h"],
+    deps = [],
+    #visibility = ["//visibility:public"],
+)

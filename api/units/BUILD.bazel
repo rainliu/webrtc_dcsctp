@@ -10,3 +10,17 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "timestamp",
+    srcs = ["timestamp.cc"],
+    hdrs = ["timestamp.h"],
+    deps = [
+        ":time_delta",
+        "//api:array_view",
+        "//rtc_base:checks",
+        "//rtc_base:stringutils",
+        "//rtc_base/units:unit_base",
+    ],
+    visibility = ["//visibility:public"],
+)

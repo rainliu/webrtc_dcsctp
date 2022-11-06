@@ -96,6 +96,55 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
+cc_library(
+    name = "logging",
+    srcs = ["logging.cc"],
+    hdrs = ["logging.h"],
+    deps = [
+        ":checks",
+        ":macromagic",
+        ":platform_thread_types",
+        ":stringutils",
+        ":timeutils",
+        "//rtc_base/system:inline",
+        "//api/units:timestamp",
+        "//rtc_base/synchronization:mutex",
+        "@com_google_absl//absl/base:core_headers",
+        "@com_google_absl//absl/meta:type_traits",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:optional",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "platform_thread_types",
+    srcs = ["platform_thread_types.cc"],
+    hdrs = ["platform_thread_types.h"],
+    deps = [
+        ":macromagic",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "timeutils",
+    srcs = [
+        "system_time.cc",
+        "time_utils.cc",
+    ],
+    hdrs = [
+        "system_time.h",
+        "time_utils.h",
+    ],
+    deps = [
+        ":checks",
+        ":safe_conversions",
+        ":stringutils",
+        "//rtc_base/system:rtc_export",
+    ],
+    #visibility = ["//visibility:public"],
+)
 
 ##################################################
 # unit tests
